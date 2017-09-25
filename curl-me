@@ -60,7 +60,7 @@ git clone https://github.com/iiab/iiab-admin-console --depth 1
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/iiab/iiab --depth 1
+git clone https://github.com/iiab/iiab --branch 6.4-RC3
 
 cd /opt/iiab/iiab
 
