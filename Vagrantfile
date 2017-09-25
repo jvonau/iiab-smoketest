@@ -9,9 +9,9 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = "true"
   # You can find out your network interface name with 'lshw -class network'
   config.vm.network "public_network", type: "dhcp", bridge: [
+    "enp3s0",
     "wlan0",
     "eth0",
-    "eth1",
     "82579LM Gigabit Network Connection",
     "82567LM-3 Gigabit Network Connection",
     "Centrino Advanced-N 6205 [Taylor Peak]"]

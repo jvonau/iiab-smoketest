@@ -17,7 +17,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/arky/iiab-smoketest</url>
+        <url>https://github.com/georgejhunt/iiab-smoketest</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -58,7 +58,7 @@
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="mailer@1.20">
-      <recipients>admin@example.com</recipients>
+      <recipients>georgejhunt@gmail.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
