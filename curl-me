@@ -64,8 +64,8 @@ git clone https://github.com/jvonau/iiab -b test
 
 cd /opt/iiab/iiab
 
-./scripts/ansible
-# Installs the correct version of Ansible
+# changed 9/26/17 to fix sed error
+apt-get install -y ansible vim tree
 
 cd /opt/iiab/iiab/vars
 
