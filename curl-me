@@ -67,6 +67,9 @@ cd /opt/iiab/iiab
 # let the ansible version provided by distribution reign
 apt-get install -y ansible tree vim
 
+# patch the ansible version 2.2.1
+sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/core/web_infrastructure/htpasswd.py
+
 cd /opt/iiab/iiab/vars
 
 #wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
