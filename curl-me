@@ -64,8 +64,8 @@ git clone https://github.com/iiab/iiab -b 6.4-RC3
 
 cd /opt/iiab/iiab
 
-./scripts/ansible
-# Installs the correct version of Ansible
+# let the ansible version provided by distribution reign
+apt-get install -y ansibe tree vim
 
 cd /opt/iiab/iiab/vars
 
