@@ -69,6 +69,10 @@ cd /opt/iiab/iiab
 # changed 9/26/17 to fix sed error
 apt-get install -y ansible vim tree
 
+# patch the ansible version 2.2.1
+sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/core/web_infrastructure/htpasswd.py
+
+
 cd /opt/iiab/iiab/vars
 #wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
 #ln -sf local_vars_big.yml local_vars.yml
