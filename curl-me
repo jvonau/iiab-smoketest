@@ -60,28 +60,20 @@ git clone https://github.com/iiab/iiab-admin-console --depth 1
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/iiab/iiab -b 6.4-RC3
+git clone https://github.com/georgejhunt/iiab -b test
 
 cd /opt/iiab/iiab
 
 # let the ansible version provided by distribution reign
-apt-get install -y ansibe tree vim
+apt-get install -y ansible tree vim
 
 cd /opt/iiab/iiab/vars
 
-if [ $LINUX_DIST == "Raspbian" ]; then
-  wget http://download.iiab.io/6.3/rpi/local_vars.yml
-  # Above assumes a virgin RPi system (wget WON'T overwrite existing files)
-fi
-# In general please examine local_vars.yml carefully (and modify as nec)
-# before running Ansible (below, which takes ~2.5 hours the first time!)
+#wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
+#ln -sf local_vars_big.yml local_vars.yml
+wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
+ln -sf local_vars_min.yml local_vars.yml
 
-# And note the security warning
-
-# NOTE: you can change many/most settings after install too, using the
-# Admin Console (http://box/admin) as documented at: http://FAQ.IIAB.IO
-
-read -p "Press enter to Install or ctl-c to STOP and edit local vars"
 
 cd /opt/iiab/iiab
 ./runansible
