@@ -1,0 +1,30 @@
+#!/bin/bash -x
+# Original shell script from  https://github.com/iiab/iiab-factory/blob/master/curl-me
+# Start loading IIAB. "bash -x" is debug mode
+
+set -e
+yum install -y git
+mkdir -p /opt/iiab
+
+# Get the extras
+cd /opt/iiab
+git clone https://github.com/iiab/iiab-factory --depth 1
+
+# Get the current install options (we'll do more with these later like manage releases)
+#source /opt/iiab/iiab-factory/factory-settings
+
+git clone https://github.com/iiab/iiab-admin-console --depth 1
+git clone https://github.com/iiab/iiab-menu --depth 1
+
+# Get iiab
+git clone https://github.com/jvonau/iiab -b test
+
+cd /opt/iiab/iiab
+./scripts/ansible
+./runansible
+
+cd /opt/iiab/iiab-admin-console
+./install
+
+cd /opt/iiab/iiab-menu
+./cp-menus
