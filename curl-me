@@ -12,7 +12,6 @@ else
         echo "The 'lsb_release' program is missing."
 fi
 
-
 if [ "$LSB_RELEASEx" != "x" ]; then
   LINUX_DIST=`lsb_release -is`
 else
@@ -29,23 +28,26 @@ else
 fi
 
 if [ $LINUX_DIST == "CentOS" ]; then
-  yum update
+  yum -y update
   # in case needed
-  yum install -y git
+  yum install -y git ansible wget
 elif [ $LINUX_DIST == "Fedora" ]; then
   dnf -y update
-  dnf -y install git
+  dnf -y install git ansible wget
 elif [ $LINUX_DIST == "Ubuntu" ] || [ $LINUX_DIST == "Debian" ] || [ $LINUX_DIST == "Raspbian" ]; then
   export DEBIAN_FRONTEND=noninteractive
   apt-get -y update
   apt-get -y dist-upgrade
   apt-get -y clean
   # in case needed
-  apt-get install -y git
+  apt-get -y install git ansible wget software-properties-common python-software-properties
 else
   echo "$LINUX_DIST not supported at this time."
   exit 1
 fi
+
+# Clean up old repositories
+if [ -d /opt/iiab ]; then rm -Rf /opt/iiab; fi
 
 mkdir -p /opt/iiab
 
@@ -64,24 +66,18 @@ git clone https://github.com/iiab/iiab -b 6.4-RC3
 
 cd /opt/iiab/iiab
 
-./scripts/ansible
-# Installs the correct version of Ansible
+# patch the ansible version 2.2.1
+# On CentOS python modules are kept under 'site-packages'
+if [ -d /usr/lib/python2.7/site-packages ]; then sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/site-packages/ansible/modules/web_infrastructure/htpasswd.py; fi
+# On Ubuntu python modules are kept under 'dist-packages'
+if [ -d /usr/lib/python2.7/dist-packages ]; then sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/web_infrastructure/htpasswd.py; fi
 
 cd /opt/iiab/iiab/vars
 
-if [ $LINUX_DIST == "Raspbian" ]; then
-  wget http://download.iiab.io/6.3/rpi/local_vars.yml
-  # Above assumes a virgin RPi system (wget WON'T overwrite existing files)
-fi
-# In general please examine local_vars.yml carefully (and modify as nec)
-# before running Ansible (below, which takes ~2.5 hours the first time!)
-
-# And note the security warning
-
-# NOTE: you can change many/most settings after install too, using the
-# Admin Console (http://box/admin) as documented at: http://FAQ.IIAB.IO
-
-read -p "Press enter to Install or ctl-c to STOP and edit local vars"
+#wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
+#ln -sf local_vars_big.yml local_vars.yml
+wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
+ln -sf local_vars_min.yml local_vars.yml
 
 cd /opt/iiab/iiab
 ./runansible
