@@ -68,6 +68,15 @@ cd /opt/iiab/iiab
 
 # changed 9/26/17 to fix sed error
 apt-get install -y ansible vim tree
+<<<<<<< HEAD
+=======
+
+# patch the ansible version 2.2.1
+sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/core/web_infrastructure/htpasswd.py
+
+
+cd /opt/iiab/iiab/vars
+>>>>>>> 81021d1c0845c77e647890ad1904052cb8fe36de
 
 # patch the ansible version 2.2.1
 sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/core/web_infrastructure/htpasswd.py

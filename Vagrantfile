@@ -44,31 +44,28 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
-  config.vm.define "debian", primary: true, autostart: true do |debian|
-    debian.vm.box = "debian/stretch64"
-    debian.vm.provision "shell", :run => 'always', path: "curl-me"
+  config.vm.define "ubuntu", primary: true, autostart: true do |ubuntu|
+    ubuntu.vm.box = "ubuntu/xenial64"
+        # Fixes Apt hash sum mismatch error https://blog.packagecloud.io/eng/2016/03/21/apt-hash-sum-mismatch/
+    ubuntu.vm.provision "shell", inline: "echo 'Acquire::CompressionTypes::Order:: \"gz\";' > /etc/apt/apt.conf.d/99compression-workaround"
+    ubuntu.vm.provision "shell", path: "curl-me-debian"
   end
 
-  config.vm.define "ubuntu", autostart: false do |ubuntu|
-    ubuntu.vm.box = "ubuntu/xenial64"
-    ubuntu.vm.provision "shell", :run => 'always', inline: "apt-add-repository -y ppa:ansible/ansible"
-        # Fixes Apt hash sum mismatch error https://blog.packagecloud.io/eng/2016/03/21/apt-hash-sum-mismatch/
-    ubuntu.vm.provision "shell", :run => 'always', inline: "echo 'Acquire::CompressionTypes::Order:: \"gz\";' > /etc/apt/apt.conf.d/99compression-workaround"
-    ubuntu.vm.provision "shell", :run => 'always', path: "curl-me"
+  config.vm.define "debian", autostart: false do |debian|
+    debian.vm.box = "debian/stretch64"
+    debian.vm.provision "shell", path: "curl-me-debian"
   end
 
   config.vm.define "fedora", autostart: false do |fedora|
     fedora.vm.box = "fedora/26-cloud-base"
     # BUG curl-me script requires 'lsb_release' which is not part of Fedora core
-    fedora.vm.provision "shell", :run => 'always', inline: "dnf -y update && dnf -y install redhat-lsb-core"
-    fedora.vm.provision "shell", :run => 'always', path: "curl-me"
+    fedora.vm.provision "shell", path: "curl-me-fedora"
   end
 
   config.vm.define "centos", autostart: false do |centos|
     centos.vm.box = "centos/7"
     # BUG curl-me script requires 'lsb_release' program
-    centos.vm.provision "shell", :run => 'always', inline: "yum -y install redhat-lsb-core"
-    centos.vm.provision "shell", :run => 'always', path: "curl-me"
+    centos.vm.provision "shell", path: "curl-me-centos"
   end
 
 end
