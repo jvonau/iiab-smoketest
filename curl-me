@@ -62,7 +62,12 @@ git clone https://github.com/iiab/iiab-admin-console --depth 1
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/georgejhunt/iiab -b test
+git clone https://github.com/jvonau/iiab -b test
+
+cd /opt/iiab/iiab
+
+./scripts/ansible
+# Installs the correct version of Ansible
 
 cd /opt/iiab/iiab/vars
 #wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
