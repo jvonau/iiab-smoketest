@@ -30,17 +30,17 @@ fi
 if [ $LINUX_DIST == "CentOS" ]; then
   yum -y update
   # in case needed
-  yum install -y git ansible wget
+  yum install -y git wget
 elif [ $LINUX_DIST == "Fedora" ]; then
   dnf -y update
-  dnf -y install git ansible wget
+  dnf -y install git wget
 elif [ $LINUX_DIST == "Ubuntu" ] || [ $LINUX_DIST == "Debian" ] || [ $LINUX_DIST == "Raspbian" ]; then
   export DEBIAN_FRONTEND=noninteractive
   apt-get -y update
   apt-get -y dist-upgrade
   apt-get -y clean
   # in case needed
-  apt-get -y install git ansible wget software-properties-common python-software-properties
+  apt-get -y install git wget
 else
   echo "$LINUX_DIST not supported at this time."
   exit 1
@@ -64,14 +64,14 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 # Get iiab
 git clone https://github.com/georgejhunt/iiab -b test
 
-cd /opt/iiab/iiab
-
 cd /opt/iiab/iiab/vars
-
 #wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
 #ln -sf local_vars_big.yml local_vars.yml
 wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
 ln -sf local_vars_min.yml local_vars.yml
+
+cd /opt/iiab/iiab/scripts
+./ansible
 
 cd /opt/iiab/iiab
 ./runansible
