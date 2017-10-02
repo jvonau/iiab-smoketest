@@ -58,7 +58,7 @@
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="mailer@1.20">
-      <recipients>georgejhunt@gmail.com</recipients>
+      <recipients>jvonau3@gmail.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
