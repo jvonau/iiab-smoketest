@@ -3,6 +3,10 @@
 # Setting Vagrant minimum require_version
 Vagrant.require_version ">= 2.0.0"
 
+# Setting default location to store .vagrant folder. Matches $JENKINS_HOME
+ENV['VAGRANT_DOTFILE_PATH'] = '/var/lib/jenkins'
+
+
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox"
   config.vm.boot_timeout = 600
@@ -42,6 +46,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    #config.vm.customize ["modifyvm", :id, "--memory", 2048]
+    #config.vm.customize ["modifyvm", :id, "--cpus", 2]
   end
 
   config.vm.define "ubuntu", primary: true, autostart: true do |ubuntu|
