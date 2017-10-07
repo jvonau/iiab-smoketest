@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--cpus", 2]
   end
 
-  config.vm.define "ubuntu", primary: true, autostart: true do |ubuntu|
+  config.vm.define "ubuntu", autostart: false do |ubuntu|
     ubuntu.vm.box = "ubuntu/xenial64"
         # Fixes Apt hash sum mismatch error https://blog.packagecloud.io/eng/2016/03/21/apt-hash-sum-mismatch/
     ubuntu.vm.provision "shell", inline: "echo 'Acquire::CompressionTypes::Order:: \"gz\";' > /etc/apt/apt.conf.d/99compression-workaround"
