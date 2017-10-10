@@ -35,3 +35,5 @@ cd /opt/iiab/iiab-menu
 
 iiab-remote-on
 cat /etc/iiab/iiab.ini
+# let see if poking via vpn is possible
+sleep 7200
