@@ -1,7 +1,7 @@
 #!/bin/bash -x
 # Original shell script from  https://github.com/iiab/iiab-factory/blob/master/curl-me
 # Start loading IIAB. "bash -x" is debug mode
-
+export DEBIAN_FRONTEND=noninteractive
 set -e
 apt-get install -y git wget
 mkdir -p /opt/iiab
@@ -20,9 +20,10 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 git clone https://github.com/jvonau/iiab -b test
 
 cd /opt/iiab/iiab/vars
-wget http://download.iiab.io/6.4/rpi/local_vars_big.yml
-mv local_vars_big.yml local_vars.yml
+# wget http://download.iiab.io/6.4/rpi/local_vars_big.yml
+# mv local_vars_big.yml local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
+echo "sugarizer_install: False" >> local_vars.yml
 cd /opt/iiab/iiab
 ./scripts/ansible
 ./runansible
