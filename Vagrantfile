@@ -6,7 +6,6 @@ Vagrant.require_version ">= 2.0.0"
 # Setting default location to store .vagrant folder. Matches $JENKINS_HOME
 ENV['VAGRANT_DOTFILE_PATH'] = '/var/lib/jenkins'
 
-
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox"
   config.vm.boot_timeout = 600
@@ -21,9 +20,6 @@ Vagrant.configure("2") do |config|
     "Centrino Advanced-N 6205 [Taylor Peak]"]
   config.vm.network "private_network", type: "dhcp"
   config.vm.network "private_network", type: "dhcp"
-  config.ssh.insert_key = true
-  config.ssh.keys_only = false
-  config.ssh.host = 'localhost'
 
   # Vagrant-dependency-manager to install required Vagrant plugins
   if File.exists?(File.dirname(__FILE__)+ "/dependency_manager.rb")
