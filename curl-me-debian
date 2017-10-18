@@ -3,8 +3,11 @@
 # Start loading IIAB. "bash -x" is debug mode
 
 set -e
-apt-get install -y git wget
-mkdir -p /opt/iiab
+apt-get install -y git wget sed
+sed -i 's|[#]*PasswordAuthentication no|PasswordAuthentication yes|g' /etc/ssh/sshd_config
+service reload sshd
+mkdir -p
+/opt/iiab
 
 # Get the extras
 cd /opt/iiab
