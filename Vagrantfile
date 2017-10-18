@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", type: "dhcp"
   config.ssh.username = "vagrant"
   config.ssh.password = "vagrant"
-  config.ssh.insert_key = false
+  config.ssh.insert_key = true
   config.ssh.keys_only = false
   config.ssh.host = 'localhost'
 
