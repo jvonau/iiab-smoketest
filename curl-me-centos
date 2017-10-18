@@ -21,6 +21,7 @@ git clone https://github.com/jvonau/iiab -b test
 
 cd /opt/iiab/iiab/vars
 echo "calibre_enabled: False" >> local_vars.yml
+echo "openvpn_enabled: True" >> local_vars.yml
 cd /opt/iiab/iiab/
 ./scripts/ansible
 ./runansible
@@ -30,3 +31,8 @@ cd /opt/iiab/iiab-admin-console
 
 cd /opt/iiab/iiab-menu
 ./cp-menus
+iiab-remote-on
+cat /etc/iiab/iiab.ini
+# let see if poking via vpn is possible
+ip a
+sleep 7200
