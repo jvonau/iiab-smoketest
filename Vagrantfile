@@ -21,7 +21,6 @@ Vagrant.configure("2") do |config|
     "Centrino Advanced-N 6205 [Taylor Peak]"]
   config.vm.network "private_network", type: "dhcp"
   config.vm.network "private_network", type: "dhcp"
-  config.ssh.keys_only = false
 
   # Vagrant-dependency-manager to install required Vagrant plugins
   if File.exists?(File.dirname(__FILE__)+ "/dependency_manager.rb")
