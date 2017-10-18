@@ -20,10 +20,12 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 git clone https://github.com/jvonau/iiab -b test
 
 cd /opt/iiab/iiab/vars
-# wget http://download.iiab.io/6.4/rpi/local_vars_big.yml
-# mv local_vars_big.yml local_vars.yml
+wget http://download.iiab.io/6.4/rpi/local_vars_min.yml
+mv local_vars_min.yml local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
 echo "user_lan_iface: none" >> local_vars.yml
+echo "iiab_lan_iface: none" >> local_vars.yml
+
 cd /opt/iiab/iiab
 ./scripts/ansible
 ./runansible
@@ -37,4 +39,5 @@ cd /opt/iiab/iiab-menu
 iiab-remote-on
 cat /etc/iiab/iiab.ini
 # let see if poking via vpn is possible
+ip a
 sleep 7200
