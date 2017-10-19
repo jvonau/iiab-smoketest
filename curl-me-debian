@@ -6,7 +6,8 @@ set -e
 apt-get install -y git wget sed
 
 sed -i 's|[#]*PasswordAuthentication no|PasswordAuthentication yes|g' /etc/ssh/sshd_config
-service reload sshd
+systemctl daemon-reload
+systemctl reload sshd
 
 mkdir -p /opt/iiab
 
