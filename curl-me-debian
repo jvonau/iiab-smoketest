@@ -4,15 +4,16 @@
 
 set -e
 apt-get install -y git wget sed
+
 sed -i 's|[#]*PasswordAuthentication no|PasswordAuthentication yes|g' /etc/ssh/sshd_config
-service reload sshd
-mkdir -p
-/opt/iiab
+systemctl daemon-reload
+systemctl reload sshd
 
-# Get the extras
+mkdir -p /opt/iiab
 cd /opt/iiab
+# Get the extras
+# This curl-me script should live here:
 git clone https://github.com/iiab/iiab-factory --depth 1
-
 # Get the current install options (we'll do more with these later like manage releases)
 #source /opt/iiab/iiab-factory/factory-settings
 
@@ -22,12 +23,13 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 # Get iiab
 git clone https://github.com/jvonau/iiab -b test
 
+./scripts/ansible
+
 cd /opt/iiab/iiab/vars
-wget http://download.iiab.io/6.4/rpi/local_vars_big.yml
+wget http://download.iiab.io/6.5/rpi/local_vars_big.yml
 mv local_vars_big.yml local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
 cd /opt/iiab/iiab
-./scripts/ansible
 ./runansible
 
 cd /opt/iiab/iiab-admin-console
