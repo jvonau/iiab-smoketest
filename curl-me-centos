@@ -36,6 +36,7 @@ echo "openvpn_enabled: True" >> local_vars.yml
 echo "user_lan_iface: none" >> local_vars.yml
 echo "iiab_lan_iface: none" >> local_vars.yml
 echo "discovered_lan_iface: none" >> local_vars.yml
+echo "installing: True" >> local_vars.yml
 cd /opt/iiab/iiab
 
 ./runansible
