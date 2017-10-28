@@ -1,8 +1,8 @@
 #!/bin/bash -x
 # Original shell script from  https://github.com/iiab/iiab-factory/blob/master/curl-me
 # Start loading IIAB. "bash -x" is debug mode
-
 set -e
+export DEBIAN_FRONTEND=noninteractive
 apt-get install -y git wget sed
 
 sed -i 's|[#]*PasswordAuthentication no|PasswordAuthentication yes|g' /etc/ssh/sshd_config
@@ -30,8 +30,9 @@ mv local_vars_big.yml local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
 echo "dansguardian_install: False" >> local_vars.yml
 echo "dansguardian_enabled: False" >> local_vars.yml
-cd /opt/iiab/iiab
+echo "is_VM: True" >> local_vars.yml
 
+cd /opt/iiab/iiab
 ./scripts/ansible
 ./runansible
 
@@ -43,6 +44,5 @@ cd /opt/iiab/iiab-menu
 
 iiab-remote-on
 cat /etc/iiab/iiab.ini
-# let see if poking via vpn is possible
 ip a
 sleep 7200
