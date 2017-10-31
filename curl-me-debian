@@ -35,7 +35,7 @@ echo "is_VM: True" >> local_vars.yml
 
 cd /opt/iiab/iiab
 ./scripts/ansible
-./runansible
+./iiab-install
 
 cd /opt/iiab/iiab-admin-console
 ./install
