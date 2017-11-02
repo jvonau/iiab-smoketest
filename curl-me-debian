@@ -35,7 +35,8 @@ echo "no_net_restart: True" >> local_vars.yml
 
 cd /opt/iiab/iiab
 ./scripts/ansible
-./runansible
+#./runansible
+./iiab-install
 
 cd /opt/iiab/iiab-admin-console
 ./install
