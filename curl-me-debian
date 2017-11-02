@@ -28,9 +28,10 @@ cd /opt/iiab/iiab/vars
 wget http://download.iiab.io/6.5/rpi/local_vars_big.yml
 mv local_vars_big.yml local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
-echo "dansguardian_install: False" >> local_vars.yml
-echo "dansguardian_enabled: False" >> local_vars.yml
-echo "is_VM: True" >> local_vars.yml
+#echo "dansguardian_install: False" >> local_vars.yml
+#echo "dansguardian_enabled: False" >> local_vars.yml
+#echo "is_VM: True" >> local_vars.yml
+echo "no_net_restart: True" >> local_vars.yml
 
 cd /opt/iiab/iiab
 ./scripts/ansible
