@@ -22,7 +22,7 @@ git clone https://github.com/iiab/iiab-admin-console --depth 1
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/jvonau/iiab -b test
+git clone https://github.com/jvonau/iiab -b merge-order4
 
 cd /opt/iiab/iiab/
 ./scripts/ansible
@@ -32,15 +32,14 @@ wget http://download.iiab.io/6.5/rpi/local_vars_min.yml
 mv local_vars_min.yml local_vars.yml
 
 echo "calibre_enabled: False" >> local_vars.yml
-echo "awstats_enabled: False" >> local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
 echo "user_lan_iface: none" >> local_vars.yml
-echo "iiab_lan_iface: none" >> local_vars.yml
-echo "discovered_lan_iface: none" >> local_vars.yml
 echo "installing: True" >> local_vars.yml
+echo "ii_VM: True" >> local_vars.yml
 cd /opt/iiab/iiab
 
-./runansible
+#./runansible
+./iiab-install
 
 cd /opt/iiab/iiab-admin-console
 ./install
