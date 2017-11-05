@@ -22,10 +22,10 @@ git clone https://github.com/iiab/iiab-admin-console --depth 1
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/jvonau/iiab -b merge-order4
+git clone https://github.com/jvonau/iiab -b iiab-order
 
 cd /opt/iiab/iiab/
-./scripts/ansible
+#./scripts/ansible
 
 cd /opt/iiab/iiab/vars
 wget http://download.iiab.io/6.5/rpi/local_vars_min.yml
