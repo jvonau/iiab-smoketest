@@ -18,7 +18,9 @@ git clone https://github.com/iiab/iiab-factory --depth 1
 # Get the current install options (we'll do more with these later like manage releases)
 #source /opt/iiab/iiab-factory/factory-settings
 
-git clone https://github.com/iiab/iiab-admin-console -b fixes-oct-24 --depth 1
+git clone https://github.com/tim-moody/iiab-admin-console -b fixes-oct-24
+#https://github.com/iiab/iiab-admin-console --depth 1
+
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
