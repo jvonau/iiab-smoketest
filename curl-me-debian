@@ -23,7 +23,7 @@ git clone https://github.com/tim-moody/iiab-admin-console -b fixes-oct-24
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/jvonau/iiab -b iiab-stage2
+git clone https://github.com/jvonau/iiab -b iiab-install4
 
 cd /opt/iiab/iiab/vars
 wget http://download.iiab.io/6.5/rpi/local_vars_big.yml
