@@ -24,7 +24,8 @@ git clone https://github.com/tim-moody/iiab-admin-console -b fixes-oct-24
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/jvonau/iiab -b iiab-stage2
+#git clone https://github.com/jvonau/iiab -b iiab-stage2
+git clone https://github.com/jvonau/iiab -b PSA
 
 cd /opt/iiab/iiab/
 #./scripts/ansible
@@ -35,7 +36,6 @@ mv local_vars_min.yml local_vars.yml
 
 echo "calibre_enabled: False" >> local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
-echo "user_lan_iface: none" >> local_vars.yml
 echo "installing: True" >> local_vars.yml
 echo "is_VM: True" >> local_vars.yml
 cd /opt/iiab/iiab
