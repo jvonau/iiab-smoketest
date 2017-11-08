@@ -38,6 +38,7 @@ mv local_vars_big.yml local_vars.yml
 
 echo "calibre_enabled: False" >> local_vars.yml
 echo "awstats_enabled: False" >> local_vars.yl
+echo "osm_enabled: False" >> local_vars.yl
 echo "openvpn_enabled: True" >> local_vars.yml
 echo "installing: True" >> local_vars.yml
 echo "is_VM: True" >> local_vars.yml
