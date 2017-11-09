@@ -24,7 +24,7 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
 #git clone https://github.com/jvonau/iiab -b iiab-install4
-git clone https://github.com/jvonau/iiab -b PSA2
+git clone https://github.com/jvonau/iiab -b cleanup2
 
 cd /opt/iiab/iiab/vars
 wget http://download.iiab.io/6.5/rpi/local_vars_big.yml
@@ -36,7 +36,7 @@ echo "openvpn_enabled: True" >> local_vars.yml
 echo "no_net_restart: True" >> local_vars.yml
 
 cd /opt/iiab/iiab
-#./scripts/ansible
+./scripts/ansible
 #./runansible
 ./iiab-install
 
@@ -49,4 +49,4 @@ cd /opt/iiab/iiab-menu
 iiab-remote-on
 cat /etc/iiab/iiab.ini
 ip a
-sleep 7200
+sleep 14400
