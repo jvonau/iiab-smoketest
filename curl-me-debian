@@ -24,7 +24,7 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
 #git clone https://github.com/jvonau/iiab -b iiab-install4
-git clone https://github.com/jvonau/iiab -b net-last-merge
+git clone https://github.com/jvonau/iiab -b net-merge
 
 cd /opt/iiab/iiab/vars
 wget http://download.iiab.io/6.5/rpi/local_vars_big.yml
