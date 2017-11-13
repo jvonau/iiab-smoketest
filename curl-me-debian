@@ -49,4 +49,4 @@ cd /opt/iiab/iiab-menu
 iiab-remote-on
 cat /etc/iiab/iiab.ini
 ip a
-sleep 14400
+sleep 7200
