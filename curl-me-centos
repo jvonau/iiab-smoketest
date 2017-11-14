@@ -29,7 +29,7 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 git clone https://github.com/iiab/iiab -b master --depth 1
 
 cd /opt/iiab/iiab/
-#./scripts/ansible
+./scripts/ansible
 
 cd /opt/iiab/iiab/vars
 #wget http://download.iiab.io/6.5/rpi/local_vars_min.yml
