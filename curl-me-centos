@@ -25,8 +25,8 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
 #git clone https://github.com/jvonau/iiab -b iiab-stage2
-#git clone https://github.com/jvonau/iiab -b PSA
-git clone https://github.com/iiab/iiab -b master --depth 1
+git clone https://github.com/jvonau/iiab -b had-1116
+#git clone https://github.com/iiab/iiab -b master --depth 1
 
 cd /opt/iiab/iiab/
 ./scripts/ansible

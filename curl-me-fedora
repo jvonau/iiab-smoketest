@@ -17,7 +17,7 @@ git clone https://github.com/iiab/iiab-admin-console --depth 1
 git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
-git clone https://github.com/jvonau/iiab -b test
+git clone https://github.com/jvonau/iiab -b had-1116
 
 cd /opt/iiab/iiab
 ./scripts/ansible
