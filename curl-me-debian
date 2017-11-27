@@ -24,14 +24,14 @@ git clone https://github.com/iiab/iiab-menu --depth 1
 
 # Get iiab
 #git clone https://github.com/jvonau/iiab -b iiab-install4
-git clone https://github.com/jvonau/iiab -b U17-2
+git clone https://github.com/jvonau/iiab -b quit2
 #git clone https://github.com/iiab/iiab -b master --depth 1
 
 cd /opt/iiab/iiab/vars
 wget http://download.iiab.io/6.5/rpi/local_vars_big.yml
 mv local_vars_big.yml local_vars.yml
 echo "openvpn_enabled: True" >> local_vars.yml
-echo "calibre_install: False" >> local_vars.yml
+#echo "calibre_install: False" >> local_vars.yml
 #echo "moodle_enabled: False" >> local_vars.yml
 #echo "is_VM: True" >> local_vars.yml
 echo "no_net_restart: True" >> local_vars.yml
